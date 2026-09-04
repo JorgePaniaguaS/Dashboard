@@ -1,0 +1,284 @@
+/* --- VARIABLES Y ESTILOS GENERALES --- */
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #38bdf8;
+  --accent-hover: #0284c7;
+  --danger-color: #f87171;
+  --radius: 16px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* --- CONTENEDOR PRINCIPAL (GRID) --- */
+.dashboard-container {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* --- TARJETAS --- */
+.header-card, .weather-card, .quote-card, .todo-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-card:hover, .weather-card:hover, .quote-card:hover, .todo-card:hover {
+  transform: translateY(-2px);
+}
+
+/* --- HEADER / RELOJ --- */
+.header-card {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-left: 5px solid var(--accent-color);
+}
+
+.greeting-box h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.greeting-box p {
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.clock-box #clock {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- CLIMA --- */
+.weather-card h2, .todo-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.weather-search {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background-color: #0f172a;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+  border-color: var(--accent-color);
+}
+
+button {
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--accent-color);
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.weather-info {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-temp {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.weather-desc {
+  text-transform: capitalize;
+  color: var(--text-secondary);
+}
+
+.weather-placeholder {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* --- FRASE MOTIVACIONAL --- */
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e293b 0%, #111827 100%);
+}
+
+#quote-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+#quote-author {
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  text-align: right;
+  font-weight: 600;
+}
+
+/* --- LISTA DE TAREAS --- */
+.todo-card {
+  grid-column: 1 / -1;
+}
+
+#todo-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.todo-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(248, 113, 113, 0.1);
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background-color: #0f172a;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.todo-content input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  color: var(--danger-color);
+  background-color: rgba(248, 113, 113, 0.1);
+}
+
+/* --- DISEÑO ADAPTABLE A MÓVILES --- */
+@media (max-width: 650px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
